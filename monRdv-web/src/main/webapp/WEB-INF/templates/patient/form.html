@@ -46,7 +46,13 @@
 					<span class="text-danger" th:errors="${patient.email}"></span>
 					</div>
 					<div class="form-group">
-						<label for="rue">Voie:</label> <input type="text"
+					<label for="principal">Principal:</label> <input type="checkbox"
+						class="form-control" id="principal" name="principal"
+						th:value="${patient.principal}">
+					<span class="text-danger" th:errors="${salle.videoProjecteur}"></span>
+				</div>
+					<div class="form-group">
+						<label for="rue">Adresse - Voie:</label> <input type="text"
 							class="form-control" id="rue" name="rue"
 							th:value="${patient.adresse?.voie}">
 					<span class="text-danger" th:errors="${patient.adresse?.voie}"></span>	
