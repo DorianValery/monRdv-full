@@ -4,6 +4,8 @@ import java.time.LocalDate;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import sopra.monRdv.model.Patient;
+
 public class PatientDTO {
 
 	private Long id;
@@ -25,20 +27,19 @@ public class PatientDTO {
 
 
 
-	public PatientDTO(Long id, String nom, String prenom, String telephone, LocalDate dtNaissance, String email,
-			boolean principal, String voie, String complement, String codePostal, String ville) {
+	public PatientDTO(Patient patient) {
 		super();
-		this.id = id;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.telephone = telephone;
-		this.dtNaissance = dtNaissance;
-		this.email = email;
-		this.principal = principal;
-		this.voie = voie;
-		this.complement = complement;
-		this.codePostal = codePostal;
-		this.ville = ville;
+		this.id = patient.getId();
+		this.nom = patient.getNom();
+		this.prenom = patient.getPrenom();
+		this.telephone = patient.getTelephone();
+		this.dtNaissance = patient.getDtNaissance();
+		this.email =patient.getEmail();
+		this.principal = patient.isPrincipal();
+		this.voie = patient.getAdresse().getVoie();
+		this.complement = patient.getAdresse().getComplement();
+		this.codePostal = patient.getAdresse().getCodePostal();
+		this.ville = patient.getAdresse().getVille();
 	}
 
 
