@@ -46,7 +46,7 @@ public class PatientController {
 
 			if (optPatient.isPresent())
 			{
-				model.addAttribute("patient",optPatient);
+				model.addAttribute("patient",optPatient.get());
 				return "patient/form";
 			}else {
 				return "forward:list";
@@ -61,6 +61,7 @@ public class PatientController {
 
 			if(patientDTO.getId() != null) {
 				patient = patientRepo.findById(patientDTO.getId()).get();
+				
 			} else {
 				patient = new Patient();
 			}
@@ -70,6 +71,8 @@ public class PatientController {
 			patient.setTelephone(patientDTO.getTelephone());
 			patient.setDtNaissance(patientDTO.getDtNaissance());
 			patient.setEmail(patientDTO.getEmail());
+			
+			
 			patient.setPrincipal(patientDTO.isPrincipal());
 			System.out.println("##################### PATIENT avant adresse: " + patient);
 			patient.setAdresse(new Adresse(patientDTO.getVoie(), patientDTO.getComplement(), patientDTO.getCodePostal(), patientDTO.getVille()));

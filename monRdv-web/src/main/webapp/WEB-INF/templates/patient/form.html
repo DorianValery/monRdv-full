@@ -27,12 +27,12 @@
 							th:value="${patient.prenom}">
 					<span class="text-danger" th:errors="${patient.prenom}"></span>
 					</div>
-<!-- 					<div class="form-group"> -->
-<!-- 						<label for="dtNaissance">Date de naissance:</label> <input -->
-<!-- 							type="date" class="form-control" id="dtNaissance" -->
-<!-- 							name="dtNaissance" th:value="${patient.dtNaissance}"> -->
-<!-- 					<span class="text-danger" th:errors="${patient.dtNaissance}"></span> -->
-<!-- 					</div> -->
+					<div class="form-group">
+						<label for="dtNaissance">Date de naissance:</label> <input
+							type="date" class="form-control" id="dtNaissance"
+							name="dtNaissance" th:value="${patient.dtNaissance}">
+					<span class="text-danger" th:errors="${patient.dtNaissance}"></span>
+					</div>
 					<div class="form-group">
 						<label for="telephone">Téléphone:</label> <input type="text"
 							class="form-control" id="telephone" name="telephone" pattern="[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}"
@@ -40,16 +40,14 @@
 					<span class="text-danger" th:errors="${patient.telephone}">	</span>
 					</div>
 					<div class="form-group">
-						<label for="email">Email:</label> <input type="text"
+						<label for="email">Email:</label> <input type="email"
 							class="form-control" id="email" name="email"
 							th:value="${patient.email}">
 					<span class="text-danger" th:errors="${patient.email}"></span>
 					</div>
 					<div class="form-group">
 					<label for="principal">Principal:</label> <input type="checkbox"
-						class="form-control" id="principal" name="principal"
-						th:value="${patient.principal}">
-
+						class="form-control" id="principal" name="principal" value="true" th:checked="${patient.principal}">
 				</div>
 					<div class="form-group">
 						<label for="voie">Adresse - Voie:</label> <input type="text"
