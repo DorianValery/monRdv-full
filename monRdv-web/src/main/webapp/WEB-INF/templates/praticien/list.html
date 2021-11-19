@@ -21,19 +21,21 @@
 						<th>Prénom</th>
 						<th>Téléphone</th>
 						<th>Secteur</th>
+						<th>Spécialités</th>
 						<th>Carte Vitale</th>
 						<th>Photo</th>
 						<th>Paiement</th>
 						<th>Durée créneau</th>
 						<th></th>
 					</tr>
-					<tr th:each="praticien : ${mesPraticiens}">
+					<tr th:each="praticien : ${praticiens}">
 						<td th:text="${praticien.id}"></td>
 						<td>[[${praticien.civilite}]]</td>
 						<td>[[${praticien.nom}]]</td>
 						<td>[[${praticien.prenom}]]</td>
 						<td>[[${praticien.telephone}]]</td>
 						<td>[[${praticien.secteur}]]</td>
+						<td>[[${praticien.specialites}]]</td>
 						<td>[[${praticien.carteVitale}]]</td>
 						<td>[[${praticien.photo}]]</td>
 						<td>[[${praticien.paiement}]]</td>

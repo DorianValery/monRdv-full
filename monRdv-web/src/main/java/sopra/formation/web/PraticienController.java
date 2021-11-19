@@ -16,62 +16,73 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import sopra.formation.web.dto.praticienDTO;
+import sopra.formation.web.dto.PraticienDTO;
+import sopra.monRdv.model.Civilite;
 import sopra.monRdv.model.Praticien;
+import sopra.monRdv.model.Secteur;
+import sopra.monRdv.model.Specialite;
 import sopra.monRdv.repository.IPraticienRepository;
+import sopra.monRdv.repository.ISpecialiteRepository;
 
 @Controller
 @RequestMapping("/praticien")
 public class PraticienController {
-	
+
 	@Autowired
 	private IPraticienRepository pratRepo = null;
-	
-	@GetMapping({"", "/list"})
+
+	@Autowired
+	private ISpecialiteRepository specialiteRepo = null;
+
+	@GetMapping({ "", "/list" })
 	public String list(Model model) {
-		List<Praticien> praticiens = pratRepo.findAll();
-		List<praticienDTO> praticiensDTO = new ArrayList<praticienDTO>();
-		
-		for(Praticien praticien : praticiens) {
-			praticiensDTO.add(new praticienDTO(praticien));
+		List<Praticien> praticiens = pratRepo.findAllWithSpecialites();
+		List<PraticienDTO> praticiensDTO = new ArrayList<PraticienDTO>();
+
+		for (Praticien praticien : praticiens) {
+			praticiensDTO.add(new PraticienDTO(praticien));
 		}
 		model.addAttribute("praticiens", praticiensDTO);
-		
+
 		return "praticien/list";
 	}
-	
+
 	@GetMapping("/add")
 	public String add(Model model) {
-		model.addAttribute("praticien", new praticienDTO());
+		model.addAttribute("praticien", new PraticienDTO());
+		model.addAttribute("civilites", Civilite.values());
+		model.addAttribute("secteurs", Secteur.values());
+
 		return "praticien/form";
 	}
-	
+
 	@GetMapping("/edit")
 	public String edit(Model model, @RequestParam Long id) {
-		Optional<Praticien> optPraticien = pratRepo.findById(id);
+		Optional<Praticien> optPraticien = pratRepo.findByIdWithSpecialites(id);
 		if (optPraticien.isPresent()) {
-			model.addAttribute("praticien", new praticienDTO(optPraticien.get()));
+			model.addAttribute("secteurs", Secteur.values());
+			model.addAttribute("civilites", Civilite.values());
+			model.addAttribute("praticien", new PraticienDTO(optPraticien.get()));
 			return "praticien/form";
-		}
-		else {
+		} else {
 			return "forward:list";
 		}
 	}
-	
+
 	@PostMapping("/save")
-	public String save(@ModelAttribute("praticien")@Valid praticienDTO praticienDTO, BindingResult result ) {
-	
-		if(result.hasErrors()) {
+	public String save(@ModelAttribute("praticien") @Valid PraticienDTO praticienDTO, BindingResult result) {
+
+		if (result.hasErrors()) {
 			return "praticien/form";
 		}
-		
+
 		Praticien praticien;
-		if(praticienDTO.getId() !=0) {
-			praticien=pratRepo.findById(praticienDTO.getId()).get();
-		}else {
-			praticien= new Praticien();
+		if (praticienDTO.getId() != null) {
+			praticien = pratRepo.findById(praticienDTO.getId()).get();
+		} else {
+			praticien = new Praticien();
 		}
-		
+
 		praticien.setCivilite(praticienDTO.getCivilite());
 		praticien.setNom(praticienDTO.getNom());
 		praticien.setPrenom(praticienDTO.getPrenom());
@@ -83,10 +94,28 @@ public class PraticienController {
 		praticien.setCheque(praticienDTO.isCheque());
 		praticien.setEspece(praticienDTO.isEspece());
 		praticien.setDureeCreneau(praticienDTO.getDureeCreneau());
-		
-		pratRepo.save(praticien);
-		
-		return "redirect:list";		
+
+		praticien = pratRepo.save(praticien);
+
+		for (String spe : praticienDTO.getSpecialites()) {
+			Specialite specialite = new Specialite();
+			specialite.setNom(spe);
+			specialite.setPraticien(praticien);
+			specialiteRepo.save(specialite);
+		}
+
+		return "redirect:list";
 	}
-		
+
+	@GetMapping("/cancel")
+	public String cancel() {
+		return "forward:list";
+	}
+
+	@GetMapping("/remove")
+	public String remove(@RequestParam Long id) {
+		pratRepo.deleteById(id);
+
+		return "redirect:list";
+	}
 }
