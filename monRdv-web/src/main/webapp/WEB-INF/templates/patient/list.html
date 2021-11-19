@@ -15,18 +15,18 @@
 			<div class="card-body">
 				<table class="table table-striped">
 					<tr>
-						<th>id</th>
-						<th>civilite</th>
-						<th>nom</th>
-						<th>prenom</th>
-						<th>dtNaissance</th>
-						<th>telephone</th>
-						<th>email</th>
-						<th>voie</th>
-						<th>complement</th>
-						<th>cp</th>
-						<th>ville</th>
-						<th>principal</th>
+						<th>[[#{patient.list.id}]]</th>
+						<th>[[#{patient.list.civilite}]]</th>
+						<th>[[#{patient.list.nom}]]</th>
+						<th>[[#{patient.list.prenom}]]</th>
+						<th>[[#{patient.list.dtNaissance}]]</th>
+						<th>[[#{patient.list.telephone}]]</th>
+						<th>[[#{patient.list.email}]]</th>
+						<th>[[#{patient.list.voie}]]</th>
+						<th>[[#{patient.list.complement}]]</th>
+						<th>[[#{patient.list.cp}]]</th>
+						<th>[[#{patient.list.ville}]]</th>
+						<th>[[#{patient.list.principal}]]</th>
 						<th></th>
 					</tr>
 					<tr th:each="pat : ${mesPatients}">
@@ -43,15 +43,20 @@
 						<td>[[${pat.adresse.ville}]]</td>
 						<td>[[${pat.principal}]]</td>
 						<td><div class="btn-group btn-group-sm">
-								<a class="btn btn-primary" th:href="@{/patient/edit(id=${pat.id})}"><i class="bi bi-pencil-square"></i></a>
-								<a class="btn btn-info" th:href="@{/patient/editWithPathVariable/{id}(id=${pat.id})}"><i class="bi bi-pencil-square"></i></a> 
-								<a class="btn btn-danger" th:href="@{/patient/remove(id=${pat.id})}"><i class="bi bi-trash"></i></a>
+								<a class="btn btn-primary"
+									th:href="@{/patient/edit(id=${pat.id})}"><i
+									class="bi bi-pencil-square"></i></a> <a class="btn btn-info"
+									th:href="@{/patient/editWithPathVariable/{id}(id=${pat.id})}"><i
+									class="bi bi-pencil-square"></i></a> <a class="btn btn-danger"
+									th:href="@{/patient/remove(id=${pat.id})}"><i
+									class="bi bi-trash"></i></a>
 							</div></td>
 					</tr>
 				</table>
 			</div>
-						<div class="card-footer">
-				<a th:href="@{/patient/add}" class="btn btn-success btn-lg"> <i class="bi bi-plus-square"></i>
+			<div class="card-footer">
+				<a th:href="@{/patient/add}" class="btn btn-success btn-lg"> <i
+					class="bi bi-plus-square"></i>
 				</a>
 			</div>
 		</div>
