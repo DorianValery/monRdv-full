@@ -2,12 +2,15 @@ package sopra.formation.web.dto;
 
 import java.time.LocalDate;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class PatientDTO {
 
 	private Long id;
 	private String nom;
 	private String prenom;
 	private String telephone;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dtNaissance;
 	private String email;
 	private boolean principal;
