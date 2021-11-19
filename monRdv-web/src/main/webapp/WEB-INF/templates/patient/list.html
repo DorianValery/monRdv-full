@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout.html">
+<head>
+<meta charset="UTF-8">
+<title>[[#{patient.list.title}]]</title>
+</head>
+<body>
+	<section layout:fragment="monContenu">
+		<div class="card mt-3">
+			<div class="card-header bg-info text-white">
+				<h2>[[#{patient.list.header}]]</h2>
+			</div>
+			<div class="card-body">
+				<table class="table table-striped">
+					<tr>
+						<th>[[#{patient.list.id}]]</th>
+						<th>[[#{patient.list.civilite}]]</th>
+						<th>[[#{patient.list.nom}]]</th>
+						<th>[[#{patient.list.prenom}]]</th>
+						<th>[[#{patient.list.telephone}]]</th>
+						<th>[[#{patient.list.dtNaissance}]]</th>
+						<th>[[#{patient.list.email}]]</th>
+						<th>[[#{patient.list.principal}]]</th>
+						<th></th>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</section>
+
+</body>
+</html>
