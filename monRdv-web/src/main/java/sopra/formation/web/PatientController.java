@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import sopra.monRdv.model.Patient;
 import sopra.monRdv.repository.IPatientRepository;
 
 @Controller
@@ -25,7 +26,9 @@ public class PatientController {
 
 		@GetMapping("/add")
 		public String add(Model model) {
-
+			model.addAttribute("patient", new Patient());
+			
+			
 			return "patient/form";
 		}
 
