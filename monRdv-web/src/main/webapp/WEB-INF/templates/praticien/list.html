@@ -21,7 +21,9 @@
 						<th>Prénom</th>
 						<th>Téléphone</th>
 						<th>Secteur</th>
+						<th>Carte Vitale</th>
 						<th>Photo</th>
+						<th>Paiement</th>
 						<th>Durée créneau</th>
 						<th></th>
 					</tr>
@@ -32,7 +34,9 @@
 						<td>[[${praticien.prenom}]]</td>
 						<td>[[${praticien.telephone}]]</td>
 						<td>[[${praticien.secteur}]]</td>
+						<td>[[${praticien.carteVitale}]]</td>
 						<td>[[${praticien.photo}]]</td>
+						<td>[[${praticien.paiement}]]</td>
 						<td>[[${praticien.dureeCreneau}]]</td>
 						<td><div class="btn-group btn-group-sm">
 								<a class="btn btn-primary" th:href="@{/praticien/edit(id=${praticien.id})}"><i class="bi bi-pencil-square"></i></a>
