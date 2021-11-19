@@ -1,5 +1,7 @@
 package sopra.formation.web;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,7 +22,9 @@ public class PatientController {
 	
 		@GetMapping({ "", "/list" })
 		public String list(Model model) {
-
+			List <Patient> patients = patientRepo.findAll();
+			
+			model.addAttribute("patients",patients);
 			return "patient/list";
 		}
 
@@ -56,7 +60,4 @@ public class PatientController {
 
 			return "redirect:list";
 		}
-	
-	
-
 }
