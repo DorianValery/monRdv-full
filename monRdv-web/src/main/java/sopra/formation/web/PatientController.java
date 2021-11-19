@@ -1,6 +1,7 @@
 package sopra.formation.web;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,8 +39,15 @@ public class PatientController {
 
 		@GetMapping("/edit")
 		public String edit(Model model, @RequestParam Long id) {
+			Optional<Patient> optPatient = patientRepo.findById(id);
 
+			if (optPatient.isPresent())
+			{
+				model.addAttribute("patient",optPatient);
 				return "patient/form";
+			}else {
+				return "forward:list";
+			}
 		}
 
 		
