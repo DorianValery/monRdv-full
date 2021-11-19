@@ -42,13 +42,9 @@
 						<td>[[${pat.adresse.ville}]]</td>
 						<td>[[${pat.principal}]]</td>
 						<td><div class="btn-group btn-group-sm">
-								<a class="btn btn-primary"
-									th:href="@{/patient/edit(id=${pat.id})}"><i
-									class="bi bi-pencil-square"></i></a> <a class="btn btn-info"
-									th:href="@{/patient/editWithPathVariable/{id}(id=${pat.id})}"><i
-									class="bi bi-pencil-square"></i></a> <a class="btn btn-danger"
-									th:href="@{/patient/remove(id=${pat.id})}"><i
-									class="bi bi-trash"></i></a>
+								<a class="btn btn-primary" th:href="@{/patient/edit(id=${pat.id})}"><i class="bi bi-pencil-square"></i></a> 
+									<a class="btn btn-info" th:href="@{/patient/editWithPathVariable/{id}(id=${pat.id})}"><i class="bi bi-pencil-square"></i></a> 
+									<a class="btn btn-danger" th:href="@{/patient/remove(id=${pat.id})}"><i class="bi bi-trash"></i></a>
 							</div></td>
 					</tr>
 				</table>

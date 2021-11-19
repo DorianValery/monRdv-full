@@ -46,7 +46,7 @@ public class PatientController {
 
 			if (optPatient.isPresent())
 			{
-				model.addAttribute("patient",optPatient);
+				model.addAttribute("patient",optPatient.get());
 				return "patient/form";
 			}else {
 				return "forward:list";
