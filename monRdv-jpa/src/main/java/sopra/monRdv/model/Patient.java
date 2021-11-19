@@ -13,7 +13,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.TemporalType;
 import javax.persistence.Version;
+
+import org.springframework.data.jpa.repository.Temporal;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class Patient {
@@ -131,5 +135,14 @@ public class Patient {
 	public void setUtilisateur(Utilisateur utilisateur) {
 		this.utilisateur = utilisateur;
 	}
+
+	@Override
+	public String toString() {
+		return "Patient [id=" + id + ", version=" + version + ", nom=" + nom + ", prenom=" + prenom + ", telephone="
+				+ telephone + ", dtNaissance=" + dtNaissance + ", email=" + email + ", principal=" + principal
+				+ ", adresse=" + adresse + ", consultations=" + consultations + ", utilisateur=" + utilisateur + "]";
+	}
+	
+	
 
 }
