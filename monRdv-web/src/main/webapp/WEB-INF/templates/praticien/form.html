@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
@@ -89,12 +90,19 @@
 						<span class="text-danger" th:errors="${praticien.dureeCreneau}"></span>
 					</div>
 					<div class="form-group" id="divSpecialite">
-						<label for="specialites">Spécialités: <a onclick="addSpecialite()" class="btn btn-info btn-sm">
-							<i class="bi bi-plus-square"></i>
-						</a></label> 
+						<label for="specialites">Spécialités: </label> 
+						<div th:each="spec : ${praticien.specialites}" >
+						<input type="text" class="form-control" th:value="${spec}" name="specialites"><br/>
+						</div>
+						
 						<input type="text" class="form-control" name="specialites"><br/>
+
 					</div>
+					<a onclick="addSpecialite()" class="btn btn-info btn-sm">
+							<i class="bi bi-plus-square"></i>
+						</a>
 				</div>
+				
 				<div class="card-footer">
 					<div class="btn-group btn-group-lg float-right">
 						<button type="submit" class="btn btn-success">
@@ -108,6 +116,7 @@
 			</form>
 		</div>
 		<script>
+		
 			function addSpecialite() {
 				var divSpecialite = $("#divSpecialite");
 				
