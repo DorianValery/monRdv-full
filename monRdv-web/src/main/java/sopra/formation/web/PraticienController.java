@@ -96,12 +96,18 @@ public class PraticienController {
 		praticien.setDureeCreneau(praticienDTO.getDureeCreneau());
 
 		praticien = pratRepo.save(praticien);
+		
+		
+		for (Specialite specialite : specialiteRepo.findByPraticienId(praticien.getId())) {
+			specialiteRepo.delete(specialite);
+		}
 
 		for (String spe : praticienDTO.getSpecialites()) {
+			if (spe!="") {
 			Specialite specialite = new Specialite();
 			specialite.setNom(spe);
 			specialite.setPraticien(praticien);
-			specialiteRepo.save(specialite);
+			specialiteRepo.save(specialite);}
 		}
 
 		return "redirect:list";
@@ -114,6 +120,9 @@ public class PraticienController {
 
 	@GetMapping("/remove")
 	public String remove(@RequestParam Long id) {
+		for (Specialite specialite : specialiteRepo.findByPraticienId(id)) {
+			specialiteRepo.delete(specialite);
+		}
 		pratRepo.deleteById(id);
 
 		return "redirect:list";
