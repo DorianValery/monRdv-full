@@ -13,7 +13,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
+@JsonView(Views.ViewCommon.class)
 public class Consultation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,6 +27,7 @@ public class Consultation {
 	private String instructions;
 	@ManyToOne
 	@JoinColumn(name = "motif_id")
+	@JsonView(Views.ViewConsultation.class)
 	private Motif motif;
 	@ManyToOne
 	@JoinColumn(name = "patient_id")
