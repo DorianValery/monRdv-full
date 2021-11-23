@@ -14,7 +14,14 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import sopra.formation.model.Views.ViewCommon;
+import sopra.formation.model.Views.ViewUtilisateurPatientDetail;
+import sopra.formation.model.Views.ViewUtilisateurPraticien;
+
 @Entity
+@JsonView(ViewCommon.class)
 public class Utilisateur {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,8 +35,10 @@ public class Utilisateur {
 	@Enumerated(EnumType.STRING)
 	@Column(length = 15)
 	private Type type;
+	@JsonView(ViewUtilisateurPraticien.class)
 	@OneToOne(mappedBy = "utilisateur")
 	private Praticien praticien;
+	@JsonView(ViewUtilisateurPatientDetail.class)
 	@OneToMany(mappedBy = "utilisateur")
 	private List<Patient> patients = new ArrayList<Patient>();
 
