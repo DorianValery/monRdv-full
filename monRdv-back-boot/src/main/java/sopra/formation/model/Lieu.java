@@ -14,18 +14,25 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 public class Lieu {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(Views.ViewCommon.class)
 	private Long id;
 	@Version
+	@JsonView(Views.ViewCommon.class)
 	private int version;
 	@Column(length = 100)
+	@JsonView(Views.ViewCommon.class)
 	private String nom;
+	@JsonView(Views.ViewCommon.class)
 	@Column(length = 1000)
 	private String informations;
 	@Embedded
+	@JsonView(Views.ViewCommon.class)
 	private Adresse adresse;
 	@ManyToOne
 	@JoinColumn(name = "praticien_id")

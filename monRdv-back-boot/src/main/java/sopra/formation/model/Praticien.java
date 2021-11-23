@@ -15,35 +15,53 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
+
 public class Praticien {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(Views.ViewCommon.class)
 	private Long id;
 	@Version
+	@JsonView(Views.ViewCommon.class)
 	private int version;
 	@Enumerated(EnumType.STRING)
 	@Column(length = 5)
+	@JsonView(Views.ViewCommon.class)
 	private Civilite civilite;
 	@Column(length = 100)
+	@JsonView(Views.ViewCommon.class)
 	private String nom;
 	@Column(length = 100)
+	@JsonView(Views.ViewCommon.class)
 	private String prenom;
 	@Column(length = 15)
+	@JsonView(Views.ViewCommon.class)
 	private String telephone;
 	@Enumerated(EnumType.STRING)
 	@Column(length = 10)
+	@JsonView(Views.ViewCommon.class)
 	private Secteur secteur;
+	@JsonView(Views.ViewCommon.class)
 	private boolean carteVitale;
 	@Column(length = 500)
+	@JsonView(Views.ViewCommon.class)
 	private String photo;
+	@JsonView(Views.ViewCommon.class)
 	private boolean carteBancaire;
+	@JsonView(Views.ViewCommon.class)
 	private boolean cheque;
+	@JsonView(Views.ViewCommon.class)
 	private boolean espece;
+	@JsonView(Views.ViewCommon.class)
 	private Integer dureeCreneau;
 	@OneToMany(mappedBy = "praticien")
+	@JsonView(Views.ViewPraticien.class)
 	private List<Specialite> specialites = new ArrayList<Specialite>();
 	@OneToMany(mappedBy = "praticien")
+	@JsonView(Views.ViewPraticien.class)
 	private List<Creneau> creneaux = new ArrayList<Creneau>();
 	@OneToMany(mappedBy = "praticien")
 	private List<Lieu> lieux = new ArrayList<Lieu>();

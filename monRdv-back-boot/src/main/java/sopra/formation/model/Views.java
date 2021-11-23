@@ -39,4 +39,11 @@ public class Views {
 	public static class ViewUtilisateurPatientDetail extends ViewUtilisateurPatient {
 	}
 
-}
+	public static class ViewPraticien extends ViewCommon {
+	}
+	public static class ViewMotif extends ViewCommon {
+	}
+
+	}
+
+
