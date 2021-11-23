@@ -24,6 +24,7 @@ public class Consultation {
 	@Version
 	private int version;
 	@Column(length = 1000)
+	@JsonView(Views.ViewConsultation.class)
 	private String instructions;
 	@ManyToOne
 	@JoinColumn(name = "motif_id")

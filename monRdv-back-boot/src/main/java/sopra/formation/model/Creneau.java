@@ -10,7 +10,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
+@JsonView(Views.ViewCommon.class)
 public class Creneau {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,12 +25,15 @@ public class Creneau {
 	private boolean dispo;
 	@ManyToOne
 	@JoinColumn(name = "praticien_id")
+	@JsonView(Views.ViewCreneauDetail.class)
 	private Praticien praticien;
 	@ManyToOne
 	@JoinColumn(name = "consultation_id")
+	@JsonView(Views.ViewCreneauDetail.class)
 	private Consultation consultation;
 	@ManyToOne
 	@JoinColumn(name = "lieu_id")
+	@JsonView(Views.ViewCreneauDetail.class)
 	private Lieu lieu;
 
 	public Creneau() {
