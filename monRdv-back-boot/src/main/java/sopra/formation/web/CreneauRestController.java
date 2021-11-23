@@ -28,21 +28,21 @@ import sopra.formation.repository.ICreneauRepository;
 public class CreneauRestController {
 
 	@Autowired
-	private ICreneauRepository CreneauRepo;
+	private ICreneauRepository creneauRepo;
 
 	@GetMapping("")
 	@JsonView(Views.ViewCreneau.class)
 	public List<Creneau> findAll() {
-		List<Creneau> creneaux = CreneauRepo.findAll();
+		List<Creneau> creneaux = creneauRepo.findAll();
 
 		return creneaux;
 	}
 	
 	
 	@GetMapping("/detail")
-	@JsonView(Views.ViewCreneau.class)
+	@JsonView(Views.ViewCreneauDetail.class)
 	public List<Creneau> findAllCreneauWithPraticienAndConsultationAndLieu() {
-		List<Creneau> creneaux = CreneauRepo.findAll();
+		List<Creneau> creneaux = creneauRepo.findAll();
 
 		return creneaux;
 	}
@@ -51,7 +51,7 @@ public class CreneauRestController {
 	@GetMapping("{id}")
 	@JsonView(Views.ViewCreneau.class)
 	public Creneau find(@PathVariable Long id) {
-		Optional<Creneau> optCreneau = CreneauRepo.findById(id);
+		Optional<Creneau> optCreneau = creneauRepo.findById(id);
 
 		if (optCreneau.isPresent()) {
 			return optCreneau.get();
@@ -60,34 +60,23 @@ public class CreneauRestController {
 		}
 	}
 	
-//	@GetMapping("{id}/detail")
-//	@JsonView(Views.ViewCreneauDetail.class)
-//	public Creneau findDetail(@PathVariable Long id) {
-//		Optional<Creneau> optCreneau = CreneauRepo.findByIdCreneauWithMotifAndPatient(id);
-//
-//		if (optCreneau.isPresent()) {
-//			return optCreneau.get();
-//		} else {
-//			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Creneau non trouvé");
-//		}
-//	}
+	@GetMapping("{id}/detail")
+	@JsonView(Views.ViewCreneauDetail.class)
+	public Creneau findDetail(@PathVariable Long id) {
+		Optional<Creneau> optCreneau = creneauRepo.findByIdCreneauWithPraticienAndConsultationAndLieu(id);
+
+		if (optCreneau.isPresent()) {
+			return optCreneau.get();
+		} else {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Creneau non trouvé");
+		}
+	}
 	
-//	@GetMapping("{id}/detailCreneaux")
-//	@JsonView(Views.ViewCreneau.class)
-//	public Creneau findDetailCreneaux(@PathVariable Long id) {
-//		Optional<Creneau> optCreneau = CreneauRepo.findByIdCreneauWithCreneaux(id);
-//
-//		if (optCreneau.isPresent()) {
-//			return optCreneau.get();
-//		} else {
-//			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Creneau non trouvé");
-//		}
-//	}
 
 	@PostMapping("")
 	@JsonView(Views.ViewCreneau.class)
 	public Creneau create(@RequestBody Creneau creneau) {
-		creneau = CreneauRepo.save(creneau);
+		creneau = creneauRepo.save(creneau);
 
 		return creneau;
 	}
@@ -95,11 +84,11 @@ public class CreneauRestController {
 	@PutMapping("/{id}")
 	@JsonView(Views.ViewCreneau.class)
 	public Creneau update(@PathVariable Long id, @RequestBody Creneau creneau) {
-		if (!CreneauRepo.existsById(id)) {
+		if (!creneauRepo.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Creneau non trouvé");
 		}
 
-		creneau = CreneauRepo.save(creneau);
+		creneau = creneauRepo.save(creneau);
 
 		return creneau;
 	}
@@ -108,11 +97,11 @@ public class CreneauRestController {
 	
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable Long id) {
-		if (!CreneauRepo.existsById(id)) {
+		if (!creneauRepo.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Creneau non trouvé");
 		}
 		
-		CreneauRepo.deleteById(id);
+		creneauRepo.deleteById(id);
 	}
 
 }

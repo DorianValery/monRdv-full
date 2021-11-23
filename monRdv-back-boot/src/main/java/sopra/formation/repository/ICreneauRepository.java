@@ -15,5 +15,7 @@ public interface ICreneauRepository extends JpaRepository<Creneau, Long> {
 	@Query("select distinct c from Creneau c left join fetch c.praticien p left join fetch c.consultation co left join fetch c.lieu l")
 	List<Creneau> findAllCreneauWithPraticienAndConsultationAndLieu(); 
 
+	@Query("select distinct c from Creneau c left join fetch c.praticien p left join fetch c.consultation co left join fetch c.lieu l where c.id = :id")
+	Optional <Creneau> findByIdCreneauWithPraticienAndConsultationAndLieu(@Param("id") Long id); 
 	
 }
