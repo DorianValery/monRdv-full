@@ -18,8 +18,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.fasterxml.jackson.annotation.JsonView;
 
 import sopra.formation.model.Consultation;
+import sopra.formation.model.Views;
 import sopra.formation.repository.IConsultationRepository;
 
 @RestController
@@ -31,15 +33,23 @@ public class ConsultationRestController {
 	private IConsultationRepository consultationRepo;
 
 	@GetMapping("")
-//	@JsonView(Views.ViewConsultation.class)
+	@JsonView(Views.ViewConsultation.class)
 	public List<Consultation> findAll() {
 		List<Consultation> consultations = consultationRepo.findAll();
 
 		return consultations;
 	}
+	
+	@GetMapping("list/detail")
+	@JsonView(Views.ViewConsultationDetail.class)
+	public List<Consultation> findAllDetails() {
+		List<Consultation> consultations = consultationRepo.findAllConsultationWithMotifAndPatient();
+
+		return consultations;
+	}
 
 	@GetMapping("{id}")
-//	@JsonView(Views.ViewConsultation.class)
+	@JsonView(Views.ViewConsultation.class)
 	public Consultation find(@PathVariable Long id) {
 		Optional<Consultation> optConsultation = consultationRepo.findById(id);
 
@@ -51,9 +61,21 @@ public class ConsultationRestController {
 	}
 	
 	@GetMapping("{id}/detail")
-//	@JsonView(Views.ViewConsultation.class)
-	public Consultation detail(@PathVariable Long id) {
-		Optional<Consultation> optConsultation = consultationRepo.findById(id);
+	@JsonView(Views.ViewConsultationDetail.class)
+	public Consultation findDetail(@PathVariable Long id) {
+		Optional<Consultation> optConsultation = consultationRepo.findByIdConsultationWithMotifAndPatient(id);
+
+		if (optConsultation.isPresent()) {
+			return optConsultation.get();
+		} else {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Consultation non trouvé");
+		}
+	}
+	
+	@GetMapping("{id}/detailCreneaux")
+	@JsonView(Views.ViewConsultationCreneaux.class)
+	public Consultation findDetailCreneaux(@PathVariable Long id) {
+		Optional<Consultation> optConsultation = consultationRepo.findByIdConsultationWithCreneaux(id);
 
 		if (optConsultation.isPresent()) {
 			return optConsultation.get();
@@ -63,7 +85,7 @@ public class ConsultationRestController {
 	}
 
 	@PostMapping("")
-//	@JsonView(Views.Viewconsultation.class)
+	@JsonView(Views.ViewConsultation.class)
 	public Consultation create(@RequestBody Consultation consultation) {
 		consultation = consultationRepo.save(consultation);
 
@@ -71,7 +93,7 @@ public class ConsultationRestController {
 	}
 
 	@PutMapping("/{id}")
-//	@JsonView(Views.Viewconsultation.class)
+	@JsonView(Views.ViewConsultation.class)
 	public Consultation update(@PathVariable Long id, @RequestBody Consultation consultation) {
 		if (!consultationRepo.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Consultation non trouvé");
