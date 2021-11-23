@@ -15,4 +15,10 @@ public class Views {
 	}
 	
 	
+	public static class ViewPatient extends ViewCommon {
+	}
+	
+	public static class ViewPatientDetail extends ViewPatient {
+	}
+	
 }
