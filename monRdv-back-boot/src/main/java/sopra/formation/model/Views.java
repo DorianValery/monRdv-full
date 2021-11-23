@@ -27,4 +27,16 @@ public class Views {
 	public static class ViewPatientDetail extends ViewPatient {
 	}
 	
+	public static class ViewUtilisateurPraticien extends ViewCommon {
+	}
+	
+	public static class ViewUtilisateur extends ViewCommon {
+	}
+	
+	public static class ViewUtilisateurPatient extends ViewCommon {
+	}
+	
+	public static class ViewUtilisateurPatientDetail extends ViewUtilisateurPatient {
+	}
+
 }
