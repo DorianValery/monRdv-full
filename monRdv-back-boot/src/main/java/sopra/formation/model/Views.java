@@ -11,4 +11,8 @@ public class Views {
 	public static class ViewConsultationCreneaux extends ViewConsultation {
 	}
 	
+	public static class ViewConsultationDetail extends ViewConsultation {
+	}
+	
+	
 }

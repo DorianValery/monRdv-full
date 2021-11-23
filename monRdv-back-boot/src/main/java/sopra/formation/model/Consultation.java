@@ -27,12 +27,14 @@ public class Consultation {
 	private String instructions;
 	@ManyToOne
 	@JoinColumn(name = "motif_id")
-	@JsonView(Views.ViewConsultation.class)
+	@JsonView(Views.ViewConsultationDetail.class)
 	private Motif motif;
 	@ManyToOne
 	@JoinColumn(name = "patient_id")
+	@JsonView(Views.ViewConsultationDetail.class)
 	private Patient patient;
 	@OneToMany(mappedBy = "consultation")
+	@JsonView(Views.ViewConsultationCreneaux.class)
 	private List<Creneau> creneaux = new ArrayList<Creneau>();
 
 	public Consultation() {
