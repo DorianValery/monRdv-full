@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import sopra.formation.model.Adresse;
 import sopra.formation.model.Civilite;
+import sopra.formation.model.Lieu;
 import sopra.formation.model.Praticien;
 import sopra.formation.model.Secteur;
 import sopra.formation.model.Specialite;
@@ -61,6 +62,8 @@ class MonRdvBackBootApplicationTests {
 		pr1.setEspece(false);
 		pr1.setDureeCreneau(15);
 		
+		pr1 = (Praticien) praticienRepo.save(pr1);
+		
 		Praticien pr2 = new Praticien();
 		pr2.setId((long) 2);
 		pr2.setVersion(0);
@@ -75,6 +78,8 @@ class MonRdvBackBootApplicationTests {
 		pr2.setCheque(true);
 		pr2.setEspece(true);
 		pr2.setDureeCreneau(5);
+		
+		pr2 = (Praticien) praticienRepo.save(pr2);
 		
 		Praticien pr3 = new Praticien();
 		pr3.setId((long) 3);
@@ -91,11 +96,25 @@ class MonRdvBackBootApplicationTests {
 		pr3.setEspece(true);
 		pr3.setDureeCreneau(10);
 		
+		pr3 = (Praticien) praticienRepo.save(pr3);
+		
+		Lieu lieu1 = new Lieu();
+		lieu1.setId((long) 1);
+		lieu1.setVersion(0);
+		lieu1.setNom("Clinique");
+		lieu1.setInformations("C'est sympa");
+		
+		
 		Adresse adr1 = new Adresse();
 		adr1.setVoie("5 avenue villemejan");
 		adr1.setComplement("Résidence Diderot");
 		adr1.setCodePostal("33600");
 		adr1.setVille("PESSAC");
+		lieu1.setAdresse(adr1);
+		
+		lieu1 = (Lieu) lieuRepo.save(lieu1);
+		
+		
 		
 		Adresse adr2 = new Adresse();
 		adr2.setVoie("86 avenue JFK");
@@ -107,13 +126,20 @@ class MonRdvBackBootApplicationTests {
 		spe1.setId((long) 1);
 		spe1.setVersion(0);
 		spe1.setNom("Cardiologie");
+		
+		spe1 = (Specialite) speRepo.save(spe1);
 		spe1.setPraticien(pr2);
 		
+		pr2 = (Praticien) praticienRepo.save(pr2);	
+		
+		
 		Specialite spe2 = new Specialite();
-		spe1.setId((long) 2);
-		spe1.setVersion(0);
-		spe1.setNom("Neurologie");
-		spe1.setPraticien(pr1);
+		spe2.setId((long) 2);
+		spe2.setVersion(0);
+		spe2.setNom("Neurologie");
+		spe2 = (Specialite) speRepo.save(spe2);
+		spe2.setPraticien(pr1);
+		pr1 = (Praticien) praticienRepo.save(pr1);
 		
 	}
 
