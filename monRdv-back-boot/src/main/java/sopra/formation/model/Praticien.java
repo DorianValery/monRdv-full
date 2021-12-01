@@ -64,6 +64,7 @@ public class Praticien {
 	@JsonView(Views.ViewPraticien.class)
 	private List<Creneau> creneaux = new ArrayList<Creneau>();
 	@OneToMany(mappedBy = "praticien")
+	@JsonView(Views.ViewPraticienDetail.class)
 	private List<Lieu> lieux = new ArrayList<Lieu>();
 	@OneToOne
 	@JoinColumn(name="utilisateur_id")
