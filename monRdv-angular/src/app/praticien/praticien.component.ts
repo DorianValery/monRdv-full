@@ -1,50 +1,52 @@
-// import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Praticien } from '../model';
+import { PraticienHttpService } from './praticien-http.service';
 
-// @Component({
-//   selector: 'app-praticien',
-//   templateUrl: './praticien.component.html',
-//   styleUrls: ['./praticien.component.scss']
-// })
-// export class PraticienComponent implements OnInit {
+@Component({
+  selector: 'app-praticien',
+  templateUrl: './praticien.component.html',
+  styleUrls: ['./praticien.component.scss']
+})
+export class PraticienComponent implements OnInit {
 
-//  praticienForm: Praticien;
+ praticienForm: Praticien;
 
-//   constructor(private praticienService: PraticienHttpService) { }
+  constructor(private praticienService: PraticienHttpService) { }
 
-//   ngOnInit(): void {
-//   }
+  ngOnInit(): void {
+  }
 
-//   list(): Array<Evaluation> {
-//     return this.evaluationService.findAll();
-//   }
+  list(): Array<Praticien> {
+    return this.praticienService.findAll();
+  }
 
-//   add() {
-//     this.evaluationForm = new Evaluation();
-//   }
+  add() {
+    this.praticienForm = new Praticien();
+  }
 
-//   edit(id: number) {
-//     this.evaluationService.findById(id).subscribe(response => {
-//       this.evaluationForm = response;
-//     }, err => console.log(err));
-//   }
+  edit(id: number) {
+    this.praticienService.findById(id).subscribe(response => {
+      this.praticienForm = response;
+    }, err => console.log(err));
+  }
 
-//   save() {
-//     if(this.evaluationForm.id) {
-//       this.evaluationService.modify(this.evaluationForm);
-//     } else {
-//       this.evaluationService.create(this.evaluationForm);
-//     }
+  save() {
+    if(this.praticienForm.id) {
+      this.praticienService.modify(this.praticienForm);
+    } else {
+      this.praticienService.create(this.praticienForm);
+    }
 
-//     this.cancel();
-//   }
+    this.cancel();
+  }
 
-//   cancel() {
-//     this.evaluationForm = null;
-//   }
+  cancel() {
+    this.praticienForm = null;
+  }
 
-//   remove(id: number) {
-//     this.evaluationService.deleteById(id);
-//   }
-// }
+  remove(id: number) {
+    this.praticienForm.deleteById(id);
+  }
 
-// }
+
+}
