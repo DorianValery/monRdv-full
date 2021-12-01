@@ -15,7 +15,7 @@ export class PraticienComponent implements OnInit {
  praticiens:Array<Praticien>;
 
   constructor(private praticienService: PraticienHttpService, private lieuService: LieuHttpService) {
-    this.loadLieux();
+    // this.loadLieux();
    }
 
   ngOnInit(): void {
@@ -25,11 +25,11 @@ export class PraticienComponent implements OnInit {
     return this.praticienService.findAll();
   }
 
-  loadLieux() {
-    this.praticienService.findByIdWithLieux().subscribe(response => {
-     this.praticienForm = response;
-    }, error => console.log(error));
-  }
+  // loadLieux() {
+  //   this.praticienService.findAllWithLieux().subscribe(response => {
+  //    this.praticienForm = response;
+  //   }, error => console.log(error));
+  // }
 
   add() {
     this.praticienForm = new Praticien();

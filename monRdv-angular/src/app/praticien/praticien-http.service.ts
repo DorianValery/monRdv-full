@@ -59,7 +59,7 @@ export class PraticienHttpService {
     }, error => console.log(error));
   }
   load() {
-    this.http.get<Array<Praticien>>(this.praticienUrl).subscribe(response => {
+    this.http.get<Array<Praticien>>(this.praticienUrl + "detail/lieux").subscribe(response => {
       this.praticiens = response;
     }, error => console.log(error));
   }
