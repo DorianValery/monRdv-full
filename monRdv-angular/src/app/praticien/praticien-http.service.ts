@@ -21,6 +21,14 @@ export class PraticienHttpService {
     return this.praticiens;
   }
 
+  findByIdWithLieux(id:number): Observable<Praticien> {
+    return this.http.get<Praticien>(this.praticienUrl + id +  "/lieux");
+  }
+
+  findById(id: number): Observable<Praticien> {
+    return this.http.get<Praticien>(this.praticienUrl + id);
+  }
+
   like(filtre: string) {
     if (filtre) {
       this.http.get<Array<Praticien>>(this.praticienUrl + "Like/" + filtre).subscribe(response => {
@@ -31,9 +39,7 @@ export class PraticienHttpService {
     }
   }
 
-  findById(id: number): Observable<Praticien> {
-    return this.http.get<Praticien>(this.praticienUrl + id);
-  }
+ 
 
   create(praticien: Praticien) {
     this.http.post<Praticien>(this.praticienUrl, praticien).subscribe(resp => {

@@ -53,10 +53,27 @@ public class PraticienRestController {
 		return praticiens;
 	}
 	
+	@GetMapping("detail/lieux")
+	@JsonView(Views.ViewPraticien.class)
+	public List<Praticien> findAllWithLieux() {
+		List<Praticien> praticiens = praticienRepo.findAllWithLieu();
+
+		return praticiens;
+	}
+	
 	@GetMapping("Cre/{id}")
 	@JsonView(Views.ViewPraticien.class)
 	public Optional<Praticien> findByIdWithCreneau(@PathVariable Long id) {
 		Optional<Praticien> praticiens = praticienRepo.findByIdWithCreneau(id);
+
+		return praticiens;
+	}
+	
+	
+	@GetMapping("/{id}/lieux")
+	@JsonView(Views.ViewPraticien.class)
+	public Optional<Praticien> findByIdWithLieu(@PathVariable Long id) {
+		Optional<Praticien> praticiens = praticienRepo.findByIdWithLieu(id);
 
 		return praticiens;
 	}
