@@ -4,7 +4,7 @@
           <a class="nav-link" [routerLink]="['/accueil']" routerLinkActive="active">Accueil</a>
       </li>
       <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/evaluation']" routerLinkActive="active">Evaluation</a>
+          <a class="nav-link" [routerLink]="['/praticien']" routerLinkActive="active">Prendre RDV</a>
       </li>
       <li class="nav-item">
           <a class="nav-link" [routerLink]="['/stagiaire']" routerLinkActive="active">Stagiaire</a>
@@ -24,3 +24,8 @@
 
   </ul>
 </nav>
+
+
+<div class="container-fluid">
+  <router-outlet></router-outlet>
+</div>
