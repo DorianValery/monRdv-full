@@ -79,7 +79,7 @@ public class PraticienRestController {
 	}
 	
 	@GetMapping("Like/{String}")
-	@JsonView(Views.ViewPraticien.class)
+	@JsonView(Views.ViewPraticienDetail.class)
 	public List<Praticien> findAllLike(@PathVariable String String) {
 		List<Praticien> praticiens=null;
 		try {
