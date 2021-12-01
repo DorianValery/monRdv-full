@@ -25,11 +25,11 @@ export class PraticienComponent implements OnInit {
     return this.praticienService.findAll();
   }
 
-  // loadLieux() {
-  //   this.praticienService.findByIdWithLieux().subscribe(response => {
-  //    this.praticienForm = response;
-  //   }, error => console.log(error));
-  // }
+  loadLieux() {
+    this.praticienService.findByIdWithLieux().subscribe(response => {
+     this.praticienForm = response;
+    }, error => console.log(error));
+  }
 
   add() {
     this.praticienForm = new Praticien();
