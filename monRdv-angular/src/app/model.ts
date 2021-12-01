@@ -1,6 +1,6 @@
 export class Praticien {
     id: number;
-    version: string;
+    version: number;
     civilite: string;
     nom: string;
     prenom: string;
@@ -15,7 +15,7 @@ export class Praticien {
 
   constructor(
     id?: number, 
-    version?: string, 
+    version?: number, 
     civilite?: string, 
     nom?: string, 
     prenom?: string, 
