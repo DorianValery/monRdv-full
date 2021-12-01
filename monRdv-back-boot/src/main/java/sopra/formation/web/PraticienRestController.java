@@ -54,7 +54,7 @@ public class PraticienRestController {
 	}
 	
 	@GetMapping("detail/lieux")
-	@JsonView(Views.ViewPraticien.class)
+	@JsonView(Views.ViewPraticienDetail.class)
 	public List<Praticien> findAllWithLieux() {
 		List<Praticien> praticiens = praticienRepo.findAllWithLieu();
 
