@@ -29,6 +29,7 @@ public class Specialite {
 	private String nom;
 	@ManyToOne
 	@JoinColumn(name = "praticien_id")
+	@JsonView(Views.ViewSpecialite.class)
 	private Praticien praticien;
 	@OneToMany(mappedBy = "specialite")
 	private List<Motif> motifs = new ArrayList<Motif>();

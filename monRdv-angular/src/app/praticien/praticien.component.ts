@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Praticien } from '../model';
+import { Lieu, Praticien } from '../model';
 import { PraticienHttpService } from './praticien-http.service';
 
 @Component({
@@ -10,8 +10,11 @@ import { PraticienHttpService } from './praticien-http.service';
 export class PraticienComponent implements OnInit {
 
  praticienForm: Praticien;
+ filtre: string;
+ praticiens:Array<Praticien>;
 
-  constructor(private praticienService: PraticienHttpService) { }
+  constructor(private praticienService: PraticienHttpService) {
+   }
 
   ngOnInit(): void {
   }
@@ -45,8 +48,12 @@ export class PraticienComponent implements OnInit {
   }
 
   remove(id: number) {
-    this.praticienForm.deleteById(id);
+    this.praticienService.deleteById(id);
   }
 
+  like($event: any) {
+    this.filtre = $event;
+    this.praticienService.like(this.filtre);
+  }
 
 }

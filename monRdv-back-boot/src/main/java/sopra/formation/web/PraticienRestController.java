@@ -46,9 +46,17 @@ public class PraticienRestController {
 	}
 	
 	@GetMapping("Spe")
-	@JsonView(Views.ViewPraticien.class)
+	@JsonView(Views.ViewPraticienDetail.class)
 	public List<Praticien> findAllWithSpecialites() {
 		List<Praticien> praticiens = praticienRepo.findAllWithSpecialites();
+
+		return praticiens;
+	}
+	
+	@GetMapping("detail/lieux")
+	@JsonView(Views.ViewPraticienDetail.class)
+	public List<Praticien> findAllWithLieux() {
+		List<Praticien> praticiens = praticienRepo.findAllWithLieu();
 
 		return praticiens;
 	}
@@ -69,7 +77,10 @@ public class PraticienRestController {
 		return praticiens;
 	}
 	
-	@GetMapping("Lieux/{id}")
+
+	
+	
+	@GetMapping("/{id}/lieux")
 	@JsonView(Views.ViewPraticien.class)
 	public Optional<Praticien> findByIdWithLieu(@PathVariable Long id) {
 		Optional<Praticien> praticiens = praticienRepo.findByIdWithLieu(id);
@@ -78,7 +89,7 @@ public class PraticienRestController {
 	}
 	
 	@GetMapping("Like/{String}")
-	@JsonView(Views.ViewPraticien.class)
+	@JsonView(Views.ViewPraticienDetail.class)
 	public List<Praticien> findAllLike(@PathVariable String String) {
 		List<Praticien> praticiens=null;
 		try {

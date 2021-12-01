@@ -34,7 +34,7 @@ public class LieuRestController {
 	private ILieuRepository LieuRepo;
 
 	@GetMapping("")
-	
+	@JsonView(Views.ViewLieu.class)
 	public List<Lieu> findAll() {
 		List<Lieu> Lieus = LieuRepo.findAll();
 
@@ -44,6 +44,7 @@ public class LieuRestController {
 	
 
 	@GetMapping("{id}")
+	@JsonView(Views.ViewLieu.class)
 	public Lieu find(@PathVariable Long id) {
 		Optional<Lieu> optLieu = LieuRepo.findById(id);
 
@@ -55,6 +56,7 @@ public class LieuRestController {
 	}
 
 	@PostMapping("")
+	@JsonView(Views.ViewLieu.class)
 	public Lieu create(@Valid @RequestBody Lieu Lieu, BindingResult result) {
 		
 		
@@ -64,6 +66,7 @@ public class LieuRestController {
 	}
 
 	@PutMapping("/{id}")
+	@JsonView(Views.ViewLieu.class)
 	public Lieu update(@PathVariable Long id, @RequestBody Lieu Lieu) {
 		if (!LieuRepo.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Lieu non trouvé");
@@ -75,6 +78,7 @@ public class LieuRestController {
 	}
 	
 	@DeleteMapping("/{id}")
+	@JsonView(Views.ViewLieu.class)
 	public void delete(@PathVariable Long id) {
 		if (!LieuRepo.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Lieu non trouvé");
