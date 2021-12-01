@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { LieuHttpService } from './lieu-http.service';
 import { PraticienHttpService } from './praticien/praticien-http.service';
 import { PraticienComponent } from './praticien/praticien.component';
+import { PraticienLieuxComponent } from './praticien-lieux/praticien-lieux.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    PraticienComponent
+    PraticienComponent,
+    PraticienLieuxComponent
   ],
   imports: [
     BrowserModule,
