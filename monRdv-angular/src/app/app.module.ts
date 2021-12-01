@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LieuHttpService } from './lieu-http.service';
 import { PraticienHttpService } from './praticien/praticien-http.service';
 import { PraticienComponent } from './praticien/praticien.component';
 
@@ -22,7 +23,7 @@ import { PraticienComponent } from './praticien/praticien.component';
     AppRoutingModule
 
   ],
-  providers: [PraticienHttpService],
+  providers: [PraticienHttpService, LieuHttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

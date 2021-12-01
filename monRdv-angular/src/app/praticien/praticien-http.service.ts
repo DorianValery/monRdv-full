@@ -21,6 +21,16 @@ export class PraticienHttpService {
     return this.praticiens;
   }
 
+  like(filtre: string) {
+    if (filtre) {
+      this.http.get<Array<Praticien>>(this.praticienUrl + "Like/" + filtre).subscribe(response => {
+        this.praticiens = response;
+      }, error => console.log(error));
+    } else {
+      this.load();
+    }
+  }
+
   findById(id: number): Observable<Praticien> {
     return this.http.get<Praticien>(this.praticienUrl + id);
   }

@@ -1,7 +1,7 @@
 <div class="card mt-3">
     <div class="card-header bg-info text-white">
         <h2>Liste des praticiens</h2>
-        <!-- <input type="text" [ngModel]="filtre" (ngModelChange)="search($event)"> -->
+        <input type="text" [ngModel]="filtre" (ngModelChange)="like($event)">
     </div>
     <div class="card-body">
         <table class="table table-striped">
@@ -24,7 +24,7 @@
                     <td>{{praticien.nom}}</td>
                     <td>{{praticien.prenom}}</td>
                     <td>{{praticien.telephone}}</td>
-                    <!-- <td>{{praticien.adresse}}</td> -->
+                    <td *ngFor="let lieu of listLieux()">{{lieu?.nom}}</td>
                     <td>{{praticien.specialites}}</td>
                     <td>
                         <div class="btn-group btn-group-sm">

@@ -4,6 +4,7 @@ import { PraticienComponent } from './praticien/praticien.component';
 
 const routes: Routes = [
   { path: "praticien", component: PraticienComponent },
+  // { path: "lieu", component: PraticienComponent },
   { path: "", component: PraticienComponent },
 
 ];

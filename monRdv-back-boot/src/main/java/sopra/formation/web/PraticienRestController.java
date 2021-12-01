@@ -66,7 +66,7 @@ public class PraticienRestController {
 	public List<Praticien> findAllLike(@PathVariable String String) {
 		List<Praticien> praticiens=null;
 		try {
-		praticiens = praticienRepo.findAllLike(String);}
+		praticiens = praticienRepo.findAllLikeWithLieux(String);}
 		catch (Exception e) {
 			e.printStackTrace();
 		}
