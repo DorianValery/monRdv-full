@@ -14,7 +14,7 @@ export class PraticienComponent implements OnInit {
  filtre: string;
  praticiens:Array<Praticien>;
 
-  constructor(private praticienService: PraticienHttpService, private lieuService: LieuHttpService) {
+  constructor(private praticienService: PraticienHttpService) {
     // this.loadLieux();
    }
 
