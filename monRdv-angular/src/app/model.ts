@@ -31,7 +31,8 @@ export class Praticien {
     cheque?: boolean, 
     espece?: boolean, 
     dureeCreneau?: number,
-    lieux?: Array<Lieu>
+    lieux?: Array<Lieu>,
+    specialites?: Array<Specialite>
 ) {
     this.id = id
     this.version = version
@@ -47,6 +48,7 @@ export class Praticien {
     this.espece = espece
     this.dureeCreneau = dureeCreneau
     this.lieux = lieux
+    this.specialites = specialites
   }
 
 

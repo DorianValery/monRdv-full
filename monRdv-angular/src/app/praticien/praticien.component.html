@@ -13,8 +13,8 @@
                     <th>Nom</th>
                     <th>Prenom</th>
                     <th>Telephone</th>
-                    <th>Lieux</th>
-                    <!-- <th>Spécialites</th> -->
+                    <!-- <th>Lieux</th> -->
+                    <th>Spécialités</th>
                     <th></th>
                 </tr>
             </thead>
@@ -24,8 +24,8 @@
                     <td>{{praticien.nom}}</td>
                     <td>{{praticien.prenom}}</td>
                     <td>{{praticien.telephone}}</td>
-                    <td ><span *ngFor="let lieu of praticien.lieux">{{lieu.nom}} <br>  </span></td>
-                    <!-- <td>{{praticien.specialites}}</td> -->
+                    <!-- <td ><span *ngFor="let lieu of praticien.lieux">{{lieu.nom}} <br>  </span></td> -->
+                    <td><span *ngFor="let specialite of praticien.specialites">{{specialite.nom}}<br></span></td>
                     <td>
                         <div class="btn-group btn-group-sm">
                             <a class="btn btn-primary" (click)="edit(praticien.id)"><i class="bi bi-pencil-square"></i></a>

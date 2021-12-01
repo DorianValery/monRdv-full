@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { LieuHttpService } from '../lieu-http.service';
 import { Lieu, Praticien } from '../model';
 import { PraticienHttpService } from './praticien-http.service';
 
@@ -15,7 +14,6 @@ export class PraticienComponent implements OnInit {
  praticiens:Array<Praticien>;
 
   constructor(private praticienService: PraticienHttpService) {
-    // this.loadLieux();
    }
 
   ngOnInit(): void {
@@ -24,12 +22,6 @@ export class PraticienComponent implements OnInit {
   list(): Array<Praticien> {
     return this.praticienService.findAll();
   }
-
-  // loadLieux(id: number) {
-  //   this.praticienService.findByIdWithLieux(id).subscribe(response => {
-  //    this.praticienForm = response;
-  //   }, error => console.log(error));
-  // }
 
   add() {
     this.praticienForm = new Praticien();

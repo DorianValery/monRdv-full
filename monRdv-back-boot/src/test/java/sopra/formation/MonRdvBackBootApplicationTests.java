@@ -2,6 +2,8 @@ package sopra.formation;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -95,18 +97,13 @@ class MonRdvBackBootApplicationTests {
 		pr3.setCheque(false);
 		pr3.setEspece(true);
 		pr3.setDureeCreneau(10);
-		
 		pr3 = (Praticien) praticienRepo.save(pr3);
 		
 		Specialite spe1 = new Specialite();
 		spe1.setId((long) 1);
 		spe1.setVersion(0);
 		spe1.setNom("Cardiologie");
-		
 		spe1 = (Specialite) speRepo.save(spe1);
-		spe1.setPraticien(pr2);
-		
-		pr2 = (Praticien) praticienRepo.save(pr2);	
 		
 		
 		Specialite spe2 = new Specialite();
@@ -114,8 +111,17 @@ class MonRdvBackBootApplicationTests {
 		spe2.setVersion(0);
 		spe2.setNom("Neurologie");
 		spe2 = (Specialite) speRepo.save(spe2);
-		spe2.setPraticien(pr1);
+		
+		List<Specialite> spes1 = new ArrayList<Specialite>();
+		spes1.add(spe1);
+		spes1.add(spe2);
+		pr1.setSpecialites(spes1);
 		pr1 = (Praticien) praticienRepo.save(pr1);
+		
+		List<Specialite> spes2 = new ArrayList<Specialite>();
+		spes2.add(spe2);
+		pr2.setSpecialites(spes2);
+		pr2 = (Praticien) praticienRepo.save(pr2);
 		
 		Lieu lieu1 = new Lieu();
 		lieu1.setId((long) 1);

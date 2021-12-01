@@ -46,7 +46,7 @@ public class PraticienRestController {
 	}
 	
 	@GetMapping("Spe")
-	@JsonView(Views.ViewPraticien.class)
+	@JsonView(Views.ViewPraticienDetail.class)
 	public List<Praticien> findAllWithSpecialites() {
 		List<Praticien> praticiens = praticienRepo.findAllWithSpecialites();
 
@@ -83,7 +83,7 @@ public class PraticienRestController {
 	public List<Praticien> findAllLike(@PathVariable String String) {
 		List<Praticien> praticiens=null;
 		try {
-		praticiens = praticienRepo.findAllLikeWithLieux(String);}
+		praticiens = praticienRepo.findAllLike(String);}
 		catch (Exception e) {
 			e.printStackTrace();
 		}
