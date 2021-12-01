@@ -103,6 +103,7 @@ class MonRdvBackBootApplicationTests {
 		spe1.setId((long) 1);
 		spe1.setVersion(0);
 		spe1.setNom("Cardiologie");
+		spe1.setPraticien(pr1);
 		spe1 = (Specialite) speRepo.save(spe1);
 		
 		
@@ -110,11 +111,12 @@ class MonRdvBackBootApplicationTests {
 		spe2.setId((long) 2);
 		spe2.setVersion(0);
 		spe2.setNom("Neurologie");
+		spe2.setPraticien(pr1);
 		spe2 = (Specialite) speRepo.save(spe2);
 		
 		List<Specialite> spes1 = new ArrayList<Specialite>();
 		spes1.add(spe1);
-		spes1.add(spe2);
+//		spes1.add(spe2);
 		pr1.setSpecialites(spes1);
 		pr1 = (Praticien) praticienRepo.save(pr1);
 		

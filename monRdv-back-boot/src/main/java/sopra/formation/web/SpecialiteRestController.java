@@ -34,7 +34,7 @@ public class SpecialiteRestController {
 	private ISpecialiteRepository SpecialiteRepo;
 
 	@GetMapping("")
-	
+	@JsonView(Views.ViewSpecialite.class)
 	public List<Specialite> findAll() {
 		List<Specialite> Specialites = SpecialiteRepo.findAll();
 
@@ -44,6 +44,7 @@ public class SpecialiteRestController {
 	
 
 	@GetMapping("{id}")
+	@JsonView(Views.ViewSpecialite.class)
 	public Specialite find(@PathVariable Long id) {
 		Optional<Specialite> optSpecialite = SpecialiteRepo.findById(id);
 
@@ -55,6 +56,7 @@ public class SpecialiteRestController {
 	}
 
 	@PostMapping("")
+	@JsonView(Views.ViewSpecialite.class)
 	public Specialite create(@Valid @RequestBody Specialite Specialite, BindingResult result) {
 		
 		
@@ -64,6 +66,7 @@ public class SpecialiteRestController {
 	}
 
 	@PutMapping("/{id}")
+	@JsonView(Views.ViewSpecialite.class)
 	public Specialite update(@PathVariable Long id, @RequestBody Specialite Specialite) {
 		if (!SpecialiteRepo.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Specialite non trouvé");
@@ -75,6 +78,7 @@ public class SpecialiteRestController {
 	}
 	
 	@DeleteMapping("/{id}")
+	@JsonView(Views.ViewSpecialite.class)
 	public void delete(@PathVariable Long id) {
 		if (!SpecialiteRepo.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Specialite non trouvé");

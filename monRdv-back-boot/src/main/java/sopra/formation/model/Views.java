@@ -43,6 +43,9 @@ public class Views {
 	}
 	public static class ViewPraticienDetail extends ViewCommon {
 	}
+	
+	public static class ViewSpecialite extends ViewCommon {
+	}
 		
 	public static class ViewLieu extends ViewCommon {
 	}
