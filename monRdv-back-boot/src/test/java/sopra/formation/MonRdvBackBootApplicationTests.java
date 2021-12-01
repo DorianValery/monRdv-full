@@ -98,30 +98,6 @@ class MonRdvBackBootApplicationTests {
 		
 		pr3 = (Praticien) praticienRepo.save(pr3);
 		
-		Lieu lieu1 = new Lieu();
-		lieu1.setId((long) 1);
-		lieu1.setVersion(0);
-		lieu1.setNom("Clinique");
-		lieu1.setInformations("C'est sympa");
-		
-		
-		Adresse adr1 = new Adresse();
-		adr1.setVoie("5 avenue villemejan");
-		adr1.setComplement("Résidence Diderot");
-		adr1.setCodePostal("33600");
-		adr1.setVille("PESSAC");
-		lieu1.setAdresse(adr1);
-		
-		lieu1 = (Lieu) lieuRepo.save(lieu1);
-		
-		
-		
-		Adresse adr2 = new Adresse();
-		adr2.setVoie("86 avenue JFK");
-		adr2.setComplement("1er étage");
-		adr2.setCodePostal("33700");
-		adr2.setVille("Mérignac");
-		
 		Specialite spe1 = new Specialite();
 		spe1.setId((long) 1);
 		spe1.setVersion(0);
@@ -140,6 +116,44 @@ class MonRdvBackBootApplicationTests {
 		spe2 = (Specialite) speRepo.save(spe2);
 		spe2.setPraticien(pr1);
 		pr1 = (Praticien) praticienRepo.save(pr1);
+		
+		Lieu lieu1 = new Lieu();
+		lieu1.setId((long) 1);
+		lieu1.setVersion(0);
+		lieu1.setNom("Clinique");
+		lieu1.setInformations("C'est sympa");
+		lieu1.setPraticien(pr1);
+		
+		Lieu lieu2 = new Lieu();
+		lieu2.setId((long) 2);
+		lieu2.setVersion(0);
+		lieu2.setNom("Hopital");
+		lieu2.setInformations("C'est grand");
+		lieu2.setPraticien(pr1);
+		
+		
+		Adresse adr1 = new Adresse();
+		adr1.setVoie("5 avenue villemejan");
+		adr1.setComplement("Résidence Diderot");
+		adr1.setCodePostal("33600");
+		adr1.setVille("PESSAC");
+		lieu1.setAdresse(adr1);
+		
+		lieu1 = (Lieu) lieuRepo.save(lieu1);
+		
+		
+		
+		Adresse adr2 = new Adresse();
+		adr2.setVoie("86 avenue JFK");
+		adr2.setComplement("1er étage");
+		adr2.setCodePostal("33700");
+		adr2.setVille("Mérignac");
+		lieu2.setAdresse(adr2);
+		lieu2 = (Lieu) lieuRepo.save(lieu2);
+		
+		
+		
+		
 		
 	}
 
