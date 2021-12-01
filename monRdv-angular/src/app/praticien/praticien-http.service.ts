@@ -13,7 +13,7 @@ export class PraticienHttpService {
   praticienUrl: string;
 
   constructor(private http: HttpClient, private appConfig: AppConfigService) { 
-    this.praticienUrl = this.appConfig.backEndUrl + "formateur/"
+    this.praticienUrl = this.appConfig.backEndUrl + "praticien/"
     this.load();
   }
 

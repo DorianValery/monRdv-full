@@ -45,7 +45,7 @@ export class PraticienComponent implements OnInit {
   }
 
   remove(id: number) {
-    this.praticienForm.deleteById(id);
+    this.praticienService.deleteById(id);
   }
 
 
